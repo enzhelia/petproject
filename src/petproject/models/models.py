@@ -4,13 +4,13 @@ from sqlalchemy import TIMESTAMP, Column, ForeignKey, Integer, MetaData, String,
 
 metadata = MetaData()
 
+# TODO возможно реализовать в одной таблице?
 
 roles = Table(
     "folders",
     metadata,
     Column("type", String, nullable=False),
     Column("id", Integer, primary_key=True),
-    Column("size", Integer, nullable=False),
     Column("parent_id", Integer, nullable=True),
     Column("date", TIMESTAMP, default=datetime.utcnow),
 )
