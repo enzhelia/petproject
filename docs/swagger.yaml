@@ -1,0 +1,48 @@
+openapi: 3.0.1
+info:
+  title: Sample API
+  version: 1.0.0
+  description: This is a sample API specification
+servers:
+  - url: http://localhost:8000
+paths:
+  /users:
+    get:
+      summary: Get a list of users
+      description: Returns a list of users
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+  /users/{id}:
+    get:
+      summary: Get a user by ID
+      description: Returns a single user based on ID
+      parameters:
+        - name: id
+          in: path
+          description: User ID
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
